@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Todo</string>
+    <string name="task_name">Task Name</string>
+    <string name="task_description">Task Description</string>
+    <string name="save">Save</string>
+    <string name="update">Update</string>
+    <string name="delete">Delete</string>
+    <string name="delete_all">Delete All</string>
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="todoVM"
+            type="com.appvengers.todo.TodoViewModel" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TodoActivity"
+    android:padding="@dimen/space_medium">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_task_name"
+        android:text="@={todoVM.tvTaskName}"
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="@string/task_name"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_task_desc"
+        app:layout_constraintTop_toBottomOf="@id/et_task_name"
+        android:hint="@string/task_description"
+        android:text="@={todoVM.tvTaskDescription}"
+        android:layout_marginTop="@dimen/space_medium"
+        android:layout_marginBottom="@dimen/space_medium"/>
+<LinearLayout
+    android:id="@+id/v_buttons"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintTop_toBottomOf="@id/et_task_desc"
+    android:layout_marginTop="@dimen/space_medium">
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@={todoVM.btnSaveOrUpdate}"
+        android:onClick="@{()-> todoVM.saveOrUpdate()}"
+        android:id="@+id/btn_save_or_update"/>
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@={todoVM.btnDeleteOrClearAll}"
+        android:onClick="@{()->todoVM.deleteOrClearAll()}"
+        android:layout_marginLeft="@dimen/space_medium"
+        android:id="@+id/btn_delete_or_clear_all"/>
+</LinearLayout>
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/lv_tasks"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/v_buttons"
+    android:layout_marginTop="@dimen/space_medium"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
